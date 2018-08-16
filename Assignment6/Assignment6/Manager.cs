@@ -13,5 +13,10 @@ namespace Assignment6
         {
 
         }
+
+        public void CountTotalTax()
+        {
+
+        }
     }
 }
