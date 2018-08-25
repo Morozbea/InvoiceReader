@@ -9,15 +9,15 @@
     <Grid>
         <Image x:Name="image_Logo" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
         <Image x:Name="logo_image" HorizontalAlignment="Left" Height="100" Margin="10,51,0,0" VerticalAlignment="Top" Width="138"/>
-        <Label Content="Apu Beverages Inc" HorizontalAlignment="Left" Margin="381,20,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="load_in_file_button" Content="Load File" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="28" Click="load_in_file_button_Click"/>
-        <Button x:Name="change_discount_voucher_button" Content="Ok (Discount/Voucher)" HorizontalAlignment="Left" Margin="550,655,0,0" VerticalAlignment="Top" Width="151" Height="28" FontSize="14" Click="change_discount_voucher_button_Click" RenderTransformOrigin="0.483,-0.214"/>
-        <Button x:Name="load_image_button" Content="Load logo" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="75" Height="28" FontSize="14" Click="load_image_button_Click"/>
-        <TextBox x:Name="invoice_number_TxtBox" HorizontalAlignment="Left" Height="23" Margin="427,79,0,0" TextWrapping="Wrap" Text="Invoice Number:        " VerticalAlignment="Top" Width="318" FontSize="14"/>
-        <TextBox x:Name="invoice_date_TxtBox" HorizontalAlignment="Left" Height="24" Margin="427,127,0,0" TextWrapping="Wrap" Text="Invoice date:" VerticalAlignment="Top" Width="318" FontSize="14"/>
-        <TextBox x:Name="due_date_TxtBox" HorizontalAlignment="Left" Height="20" Margin="427,151,0,0" TextWrapping="Wrap" Text="Due date:" VerticalAlignment="Top" Width="175" FontSize="14"/>
-        <ListBox x:Name="address_ListBox" HorizontalAlignment="Left" Height="137" Margin="427,176,0,0" VerticalAlignment="Top" Width="318" FontSize="14"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="210" Margin="87,366,0,0" VerticalAlignment="Top" Width="614"/>
+        <Label x:Name="lbl_CompanyName" Content="Apu Beverages Inc" HorizontalAlignment="Left" Margin="381,20,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="button_LoadFile" Content="Load File" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="28" Click="load_in_file_button_Click"/>
+        <Button x:Name="button_OK" Content="Ok (Discount/Voucher)" HorizontalAlignment="Left" Margin="550,655,0,0" VerticalAlignment="Top" Width="151" Height="28" FontSize="14" Click="change_discount_voucher_button_Click" RenderTransformOrigin="0.483,-0.214"/>
+        <Button x:Name="button_LoadLogo" Content="Load logo" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="75" Height="28" FontSize="14" Click="load_image_button_Click"/>
+        <TextBox x:Name="txtBox_InvoiceNumber" HorizontalAlignment="Left" Height="23" Margin="427,79,0,0" TextWrapping="Wrap" Text="Invoice Number:        " VerticalAlignment="Top" Width="318" FontSize="14"/>
+        <TextBox x:Name="txtBox_IvoiceDate" HorizontalAlignment="Left" Height="24" Margin="427,127,0,0" TextWrapping="Wrap" Text="Invoice date:" VerticalAlignment="Top" Width="318" FontSize="14"/>
+        <TextBox x:Name="txtBox_DueDate" HorizontalAlignment="Left" Height="20" Margin="427,151,0,0" TextWrapping="Wrap" Text="Due date:" VerticalAlignment="Top" Width="175" FontSize="14"/>
+        <ListBox x:Name="listBox_CompanyAddress" HorizontalAlignment="Left" Height="137" Margin="427,176,0,0" VerticalAlignment="Top" Width="318" FontSize="14"/>
+        <DataGrid x:Name="dataGrid_ProductDetails" HorizontalAlignment="Left" Height="210" Margin="87,366,0,0" VerticalAlignment="Top" Width="614"/>
         <Label x:Name="lbl_Address" Content="Address" HorizontalAlignment="Left" Margin="131,597,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Phone" Content="Phone" HorizontalAlignment="Left" Margin="353,664,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.966"/>
         <Label x:Name="lbl_HomePage" Content="Home Page" HorizontalAlignment="Left" Margin="355,726,0,0" VerticalAlignment="Top"/>
@@ -26,8 +26,8 @@
         <TextBox x:Name="txtBox_HomePage" HorizontalAlignment="Left" Height="22" Margin="355,760,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
         <TextBox x:Name="txtBox_DiscountNumber" HorizontalAlignment="Left" Height="24" Margin="526,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
         <TextBox x:Name="txtBox_AmountToPayNumber" HorizontalAlignment="Left" Height="24" Margin="526,631,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
-        <Label Content="Discount/Voucher" HorizontalAlignment="Left" Margin="388,597,0,0" VerticalAlignment="Top"/>
-        <Label Content="Amount to play" HorizontalAlignment="Left" Margin="402,630,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Discount" Content="Discount/Voucher" HorizontalAlignment="Left" Margin="388,597,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_AmountToPay" Content="Amount to play" HorizontalAlignment="Left" Margin="402,630,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Total" Content="Total" HorizontalAlignment="Left" Margin="469,576,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBox_Total" HorizontalAlignment="Left" Height="23" Margin="526,576,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
 

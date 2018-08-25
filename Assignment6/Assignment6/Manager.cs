@@ -22,7 +22,7 @@ namespace Assignment6
             set { mTotalTotalPrice = value; }
         }
 
-        public void CountTotalTax(string totalPrice, string discount)
+        public void CountTotalAmount(string totalPrice, string discount)
         {
             int total;
             int discountToInt;
@@ -41,6 +41,11 @@ namespace Assignment6
             {
 
             }
+        }
+
+        public void CountTotal()
+        {
+
         }
     }
 }

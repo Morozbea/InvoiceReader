@@ -173,7 +173,7 @@ namespace Assignment6
 
         private void change_discount_voucher_button_Click(object sender, RoutedEventArgs e)
         {
-            manager.CountTotalTax(info.Total, txtBox_DiscountNumber.Text);
+            manager.CountTotalAmount(info.Total, txtBox_DiscountNumber.Text);
             txtBox_AmountToPayNumber.Text = manager.Total.ToString();
         }
     }
