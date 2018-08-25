@@ -8,19 +8,12 @@ namespace Assignment6
 {
     public class Manager
     {
-        string m_totalPrice;
-        string m_discount;
-        int mTotalTotalPrice;
         public Manager()
         {
 
         }
 
-        public int Total
-        {
-            get { return mTotalTotalPrice; }
-            set { mTotalTotalPrice = value; }
-        }
+        public int Total { get; set; }
 
         public void CountTotalAmount(string totalPrice, string discount)
         {
@@ -43,9 +36,6 @@ namespace Assignment6
             }
         }
 
-        public void CountTotal()
-        {
-
-        }
+       
     }
 }
