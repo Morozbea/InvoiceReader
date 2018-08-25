@@ -25,14 +25,19 @@ namespace Assignment6
         List<string> listOfDatas = new List<string>();
         string[] datas = new string[24];
         InvoiceInformation info;
-
+        Manager manager = new Manager();
 
         public MainWindow()
         {
             InitializeComponent();
             info = new InvoiceInformation();
-            //Generate_ColumnsTest();
             GenerateDataToDataGrid();
+        }
+
+        void InitializeGUI()
+        {
+            txtBox_AmountToPayNumber.IsReadOnly = true;
+            txtBox_Total.IsReadOnly = true;
         }
 
         private void GenerateDataToDataGrid()
@@ -88,11 +93,11 @@ namespace Assignment6
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             dlg.FilterIndex = 2;
-            dlg.RestoreDirectory = true;         
+            dlg.RestoreDirectory = true;
             string line;
             if (dlg.ShowDialog() == true)
             {
-                string file = dlg.FileName;               
+                string file = dlg.FileName;
                 try
                 {
                     using (sr = new StreamReader(file))
@@ -146,6 +151,8 @@ namespace Assignment6
                     txtBox_Phone.Text = info.SellersTelNumber;
                     txtBox_HomePage.Text = info.SellersHomePage;
 
+                    txtBox_Total.Text = info.Total;
+
                     dataGrid.Items.Add(new GridClass
                     {
                         Item = info.Item,
@@ -162,6 +169,12 @@ namespace Assignment6
                     MessageBox.Show("Error:  Could not read file from disk. Original error: " + ex.ToString());
                 }
             }
+        }
+
+        private void change_discount_voucher_button_Click(object sender, RoutedEventArgs e)
+        {
+            manager.CountTotalTax(info.Total, txtBox_DiscountNumber.Text);
+            txtBox_AmountToPayNumber.Text = manager.Total.ToString();
         }
     }
 }
