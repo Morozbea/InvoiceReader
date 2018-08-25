@@ -50,13 +50,13 @@ namespace Assignment6
             DataGridTextColumn col6 = new DataGridTextColumn();
             DataGridTextColumn col7 = new DataGridTextColumn();
 
-            dataGrid.Columns.Add(col1);
-            dataGrid.Columns.Add(col2);
-            dataGrid.Columns.Add(col3);
-            dataGrid.Columns.Add(col4);
-            dataGrid.Columns.Add(col5);
-            dataGrid.Columns.Add(col6);
-            dataGrid.Columns.Add(col7);
+            dataGrid_ProductDetails.Columns.Add(col1);
+            dataGrid_ProductDetails.Columns.Add(col2);
+            dataGrid_ProductDetails.Columns.Add(col3);
+            dataGrid_ProductDetails.Columns.Add(col4);
+            dataGrid_ProductDetails.Columns.Add(col5);
+            dataGrid_ProductDetails.Columns.Add(col6);
+            dataGrid_ProductDetails.Columns.Add(col7);
 
             col1.Binding = new Binding("Item");
             col2.Binding = new Binding("Description");
@@ -137,15 +137,15 @@ namespace Assignment6
                     info.SellersTelNumber = listOfDatas[21];
                     info.SellersHomePage = listOfDatas[22];
 
-                    invoice_number_TxtBox.Text = "Invoice Number: " + info.InvoceNumber;
-                    invoice_date_TxtBox.Text = "Invoice Date: " + info.InvoiceDate;
-                    due_date_TxtBox.Text = "Due Date: " + info.DueDate;
-                    address_ListBox.Items.Add(info.CompanyNameOfOrder);
-                    address_ListBox.Items.Add(info.OwnerNameOfOrder);
-                    address_ListBox.Items.Add(info.AdressOfOrder);
-                    address_ListBox.Items.Add(info.PostNumberOfOrder);
-                    address_ListBox.Items.Add(info.CityOfOrder);
-                    address_ListBox.Items.Add(info.CountryOfOrder);
+                    txtBox_InvoiceNumber.Text = "Invoice Number: " + info.InvoceNumber;
+                    txtBox_IvoiceDate.Text = "Invoice Date: " + info.InvoiceDate;
+                    txtBox_DueDate.Text = "Due Date: " + info.DueDate;
+                    listBox_CompanyAddress.Items.Add(info.CompanyNameOfOrder);
+                    listBox_CompanyAddress.Items.Add(info.OwnerNameOfOrder);
+                    listBox_CompanyAddress.Items.Add(info.AdressOfOrder);
+                    listBox_CompanyAddress.Items.Add(info.PostNumberOfOrder);
+                    listBox_CompanyAddress.Items.Add(info.CityOfOrder);
+                    listBox_CompanyAddress.Items.Add(info.CountryOfOrder);
 
                     txtBox_Address.Text = info.CompanyNameOfSeller + "\r\n" + info.SellersAddress + "\r\n" + info.SellersPostNumber + "\r\n" + info.SellersCity + "\r\n" + info.SellersCountry;
                     txtBox_Phone.Text = info.SellersTelNumber;
@@ -153,7 +153,7 @@ namespace Assignment6
 
                     txtBox_Total.Text = info.Total;
 
-                    dataGrid.Items.Add(new GridClass
+                    dataGrid_ProductDetails.Items.Add(new GridClass
                     {
                         Item = info.Item,
                         Description = info.Description,
