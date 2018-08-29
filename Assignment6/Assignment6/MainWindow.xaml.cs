@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Assignment6
 {
@@ -22,9 +23,11 @@ namespace Assignment6
     /// </summary>
     public partial class MainWindow : Window
     {
+        //the list of the data that we read from the text file
         List<string> listOfDatas = new List<string>();
-        string[] datas = new string[24];
+        //the information of that reads from the textfile (but not the grid)
         InvoiceInformation info;
+        //handles the count of the discount
         Manager manager = new Manager();
 
         public MainWindow()
@@ -32,14 +35,21 @@ namespace Assignment6
             InitializeComponent();
             info = new InvoiceInformation();
             GenerateDataToDataGrid();
+            InitializeGUI();
         }
-
+        /// <summary>
+        /// Initilialize the GUI
+        /// the Total and the AMount to pay textboxes needs to be read only
+        /// </summary>
         void InitializeGUI()
         {
             txtBox_AmountToPayNumber.IsReadOnly = true;
             txtBox_Total.IsReadOnly = true;
         }
 
+        /// <summary>
+        /// Create the Datagrid and its columns
+        /// </summary>
         private void GenerateDataToDataGrid()
         {
             DataGridTextColumn col1 = new DataGridTextColumn();
@@ -75,6 +85,11 @@ namespace Assignment6
             col7.Header = "Total";
         }
 
+        /// <summary>
+        /// Iamge Loading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void load_image_button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -85,6 +100,11 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// Load a text file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void load_in_file_button_Click(object sender, RoutedEventArgs e)
         {
             listOfDatas.Clear();
@@ -102,17 +122,15 @@ namespace Assignment6
                 {
                     using (sr = new StreamReader(file))
                     {
+                        //read the text file line by line and add it to a list
                         while (!sr.EndOfStream && (line = sr.ReadLine()) != null)
                         {
                             listOfDatas.Add(line);
                         }
                     }
                     sr.Close();
-                    for (int i = 0; i < listOfDatas.Count + 1; i++)
-                    {
-                        Console.WriteLine(i);
-                    }
 
+                    //set the datas 
                     info.InvoceNumber = listOfDatas[0];
                     info.InvoiceDate = listOfDatas[1];
                     info.DueDate = listOfDatas[2];
@@ -125,10 +143,10 @@ namespace Assignment6
                     info.Item = listOfDatas[9];
                     info.Description = listOfDatas[10];
                     info.Quantity = listOfDatas[11];
-                    info.UnitPrice = listOfDatas[12];
                     info.Tax = listOfDatas[13];
-                    info.TotalTax = listOfDatas[14];
                     info.Total = listOfDatas[15];
+                    info.TotalTax = listOfDatas[14];
+                    info.UnitPrice = listOfDatas[12];
                     info.CompanyNameOfSeller = listOfDatas[16];
                     info.SellersAddress = listOfDatas[17];
                     info.SellersPostNumber = listOfDatas[18];
@@ -140,19 +158,20 @@ namespace Assignment6
                     txtBox_InvoiceNumber.Text = "Invoice Number: " + info.InvoceNumber;
                     txtBox_IvoiceDate.Text = "Invoice Date: " + info.InvoiceDate;
                     txtBox_DueDate.Text = "Due Date: " + info.DueDate;
+                    //Add the address of the buyer to a listbox
                     listBox_CompanyAddress.Items.Add(info.CompanyNameOfOrder);
                     listBox_CompanyAddress.Items.Add(info.OwnerNameOfOrder);
                     listBox_CompanyAddress.Items.Add(info.AdressOfOrder);
                     listBox_CompanyAddress.Items.Add(info.PostNumberOfOrder);
                     listBox_CompanyAddress.Items.Add(info.CityOfOrder);
                     listBox_CompanyAddress.Items.Add(info.CountryOfOrder);
-
+                    //Add the address of the company to a listbox
                     txtBox_Address.Text = info.CompanyNameOfSeller + "\r\n" + info.SellersAddress + "\r\n" + info.SellersPostNumber + "\r\n" + info.SellersCity + "\r\n" + info.SellersCountry;
                     txtBox_Phone.Text = info.SellersTelNumber;
                     txtBox_HomePage.Text = info.SellersHomePage;
-
+                    //Add the total price to the textbox
                     txtBox_Total.Text = info.Total;
-
+                    //Set the data in the gridclass
                     dataGrid_ProductDetails.Items.Add(new GridClass
                     {
                         Item = info.Item,
@@ -163,18 +182,35 @@ namespace Assignment6
                         TotalTax = info.TotalTax,
                         UnitPrice = info.UnitPrice
                     });
+                    
+                    
                 }
+                //catch any error if happens
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error:  Could not read file from disk. Original error: " + ex.ToString());
                 }
             }
         }
-
+        /// <summary>
+        /// Counts the new value if there is a discount given
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void change_discount_voucher_button_Click(object sender, RoutedEventArgs e)
         {
             manager.CountTotalAmount(info.Total, txtBox_DiscountNumber.Text);
             txtBox_AmountToPayNumber.Text = manager.Total.ToString();
+        }
+        /// <summary>
+        /// The textbox can handle the dot and commas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBox_DiscountNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            e.Handled = Regex.IsMatch(e.Text, "(,[^0-9]).?");
         }
     }
 }

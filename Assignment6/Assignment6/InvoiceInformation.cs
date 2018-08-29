@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment6
 {
+    //gets all data all data that is not in the datagrid
     class InvoiceInformation
     {
         public string InvoceNumber { get; set; }
@@ -31,11 +32,6 @@ namespace Assignment6
         public string SellersCountry { get; set; }
         public string SellersTelNumber { get; set; }
         public string SellersHomePage { get; set; }
-
-        public void ToDataGrid()
-        {
-            List<InvoiceInformation> list = new List<InvoiceInformation>();
-            
-        }
+                
     }
 }

@@ -24,7 +24,7 @@
         <TextBox x:Name="txtBox_Address" HorizontalAlignment="Left" Height="151" Margin="131,631,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193"/>
         <TextBox x:Name="txtBox_Phone" HorizontalAlignment="Left" Height="23" Margin="355,698,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="txtBox_HomePage" HorizontalAlignment="Left" Height="22" Margin="355,760,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
-        <TextBox x:Name="txtBox_DiscountNumber" HorizontalAlignment="Left" Height="24" Margin="526,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+        <TextBox x:Name="txtBox_DiscountNumber" HorizontalAlignment="Left" Height="24" Margin="526,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" PreviewTextInput="txtBox_DiscountNumber_PreviewTextInput"/>
         <TextBox x:Name="txtBox_AmountToPayNumber" HorizontalAlignment="Left" Height="24" Margin="526,631,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
         <Label x:Name="lbl_Discount" Content="Discount/Voucher" HorizontalAlignment="Left" Margin="388,597,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_AmountToPay" Content="Amount to play" HorizontalAlignment="Left" Margin="402,630,0,0" VerticalAlignment="Top"/>
